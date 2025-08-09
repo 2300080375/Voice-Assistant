@@ -6,7 +6,7 @@ from command_processor import process_command
 
 recognizer = sr.Recognizer()
 
-speak("Voice assistant is ready. Say 'hey buddy' before your command.")
+speak("Voice assistant is ready. Say 'hey rio' before your command.")
 
 while True:
     try:
@@ -20,7 +20,7 @@ while True:
                 break
 
             # === Exact wake word ===
-            if command == "hey buddy":
+            if command == "hey rio":
                 speak("Yeah, please tell me")
                 time.sleep(1.2)  # 🔄 wait to let TTS fully complete
 
@@ -31,14 +31,14 @@ while True:
                     speak("I didn't catch that. Please try again.")
 
             # === Wake word + command in one sentence ===
-            elif command.startswith("hey buddy"):
+            elif command.startswith("hey rio"):
                 speak("Yeah, please tell me")
                 time.sleep(1.2)  # 🔄 give time for TTS
-                actual_command = command.replace("hey buddy", "", 1).strip()
+                actual_command = command.replace("hey rio", "", 1).strip()
                 if actual_command:
                     process_command(actual_command)
                 else:
-                    speak("Please say the command after 'hey buddy'.")
+                    speak("Please say the command after 'hey rio'.")
 
             else:
                 print("💤 Wake word not detected. Ignoring...")
